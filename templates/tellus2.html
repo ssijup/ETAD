@@ -1,0 +1,86 @@
+{% load static %}
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Login #7</title>
+    
+    <!-- Custom CSS to ensure labels are visible -->
+    <style>
+        .form-group label {
+            color: #b3b3b3;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 contents">
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <div class="mb-4">
+                            <h3>Tell us about you</h3>
+                            <p class="mb-4">Tell us about you</p>
+                        </div>
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <label for="height">Your height (in cm)</label>
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="height" name="height" placeholder="height" min="1" max="299" required>
+                            </div>
+                            <label for="education">Education</label>
+                            <div class="form-group">    
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="undergraduate" name="user_education" value="undergraduate" required>
+                                    <label class="custom-control-label" for="undergraduate">Undergraduate</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="post_graduate" name="user_education" value="post_graduate" required>
+                                    <label class="custom-control-label" for="post_graduate">Post Graduate</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="highschool" name="user_education" value="highschool" required>
+                                    <label class="custom-control-label" for="highschool">Highschool</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="notspecify" name="user_education" value="notspecify" required>
+                                    <label class="custom-control-label" for="notspecify">Not interested to specify</label>
+                                </div>
+                                <!-- Add more options for education if needed -->
+                            </div>
+                            <br>
+                            <input type="submit" value="Continue" class="btn btn-block btn-custom">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

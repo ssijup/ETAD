@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify All Gun.js Users</title>
+    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+</head>
+<body>
+    <h1>Verify All Gun.js Users</h1>
+    <div id="output"></div>
+    <script>
+        const gun = Gun('http://localhost:8765/gun');
+
+        function displayData(data) {
+            const output = document.getElementById('output');
+            const pre = document.createElement('pre');
+            pre.textContent = JSON.stringify(data, null, 2);
+            output.appendChild(pre);
+        }
+
+        gun.get('users').map().once((data, key) => {
+            if (data) {
+                console.log('User key:', key);
+                console.log('User data:', data);
+                displayData({ key: key, data: data });
+            } else {
+                console.error('No data found for key:', key);
+            }
+        });
+    </script>
+</body>
+</html>

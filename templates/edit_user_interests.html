@@ -1,0 +1,102 @@
+{% load static %}
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Login #7</title>
+    
+    <!-- Custom CSS to ensure labels are visible -->
+    <style>
+        .form-group label {
+            color: #b3b3b3;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 contents">
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <div class="mb-4 d-flex justify-content-between align-items-center">
+                            <h3>Tell us what you like</h3>
+                            <button><a href="{% url 'user_dashboard' %}" class="text-decoration-none">X</a>
+                            </button>
+                        </div>
+                        <p class="mb-4">Edit your interests</p>
+                        
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <label for="like">Like</label>
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="art" name="interested_in" value="art">
+                                    <label class="custom-control-label" for="art">Art</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="food" name="interested_in" value="food">
+                                    <label class="custom-control-label" for="food">Food</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="trucking" name="interested_in" value="trucking">
+                                    <label class="custom-control-label" for="trucking">Trucking</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="coffee" name="interested_in" value="coffee">
+                                    <label class="custom-control-label" for="coffee">Coffee</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="music" name="interested_in" value="music">
+                                    <label class="custom-control-label" for="music">Music</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="party" name="interested_in" value="party">
+                                    <label class="custom-control-label" for="party">Party</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="books" name="interested_in" value="Books">
+                                    <label class="custom-control-label" for="party">Books</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="sports" name="interested_in" value="Sports">
+                                    <label class="custom-control-label" for="party">Sports</label>
+                                </div>
+                                <!-- Add more checkboxes for other interests -->
+                            </div>
+                            <br>
+                            <input type="submit" value="Update" class="btn btn-block btn-custom">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

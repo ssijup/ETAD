@@ -1,0 +1,74 @@
+{% load static %}
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Login</title>
+    
+    <!-- Custom CSS to ensure labels are visible -->
+    <style>
+        .form-group label {
+            color: #b3b3b3;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 contents">
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <div class="mb-4">
+                            <h3>Choose a profile photo </h3>
+                            {% comment %} <p class="mb-4"></p> {% endcomment %}
+                        </div>
+                        <form action="#" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            
+                            <label for="education">Image</label>
+                            <div class="form-group">
+                                <input type="file" class="form-control" id="image" name="image" placeholder="image" min="1" max="299" required>
+                            </div>
+                            <label for="height">Description</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="desc" name="description" placeholder="description" min="1" max="299" required>
+                            </div>
+                    
+
+                            <br>
+                            <input type="submit" value="Continue" class="btn btn-block btn-custom">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+

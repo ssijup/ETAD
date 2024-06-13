@@ -1,0 +1,93 @@
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="'https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Login #7</title>
+    
+    <!-- Custom CSS to ensure labels are visible -->
+    <style>
+        .form-group label {
+            color: #b3b3b3;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 contents">
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <div class="mb-4">
+                            <h3>Tell us about you</h3>
+                            <p class="mb-4">Tell us about you</p>
+                        </div>
+                       
+                        <form action="#" method="POST">
+                            {% csrf_token %}        
+                            <label for="gender">Gender</label>
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="male" name="gender" value="male" required>
+                                    <label class="custom-control-label" for="male">Male</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="female" name="gender" value="female" required>
+                                    <label class="custom-control-label" for="female">Female</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="rather_not_say" name="gender" value="rather_not_say" required>
+                                    <label class="custom-control-label" for="rather_not_say">Rather not say</label>
+                                </div>
+                            </div>
+                            <label for="interested_in">You are interested in seeing</label>
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="interested_male" name="interested_gender" value="male" required>
+                                    <label class="custom-control-label" for="interested_male">Male</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="interested_female" name="interested_gender" value="female" required>
+                                    <label class="custom-control-label" for="interested_female">Female</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="interested_both" name="interested_gender" value="both" required>
+                                    <label class="custom-control-label" for="interested_both">Both</label>
+                                </div>
+                            </div>
+                            <br>
+                            <input type="submit" class="btn btn-block btn-custom">
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

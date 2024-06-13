@@ -1,0 +1,192 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tape</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+  body {
+    background-color: #eeeeee;
+  }
+
+  .h7 {
+    font-size: 0.8rem;
+  }
+
+  .gedf-wrapper {
+    margin-top: 0.97rem;
+  }
+
+  @media (min-width: 992px) {
+    .gedf-main {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+    .gedf-card {
+      margin-bottom: 2.77rem;
+      background-color: #ffffff; /* Set white background color for card */
+      padding: 20px; /* Add padding for better readability */
+    }
+  }
+
+  /**Reset Bootstrap*/
+  .dropdown-toggle::after {
+    content: none;
+    display: none;
+  }
+
+  /* Style for user details container */
+  .user-details {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Style for user image */
+  .user-image {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+</style>
+</head>
+<body>
+<nav class="navbar navbar-light bg-white">
+  <a href="#" class="navbar-brand">TapeEy.com</a>
+  <form class="form-inline">
+    <div class="input-group">
+      <!--  
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Recipient's username"
+        aria-describedby="button-addon2"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          id="button-addon2"
+        >
+        
+          <i class="fa fa-search"></i>
+          
+        </button>
+      </div>
+      -->
+    </div>
+    <a href="{% url 'user_logout' %}" class="card-link float-left swipe-left">
+      <i class="fa fa-Logout"></i> Logout
+    </a>
+  </form>
+</nav>
+<div class="container gedf-wrapper">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="h5">{{email}}</div>
+          <div class="h7 text-muted">Fullname : {{context.current_user.name}}</div>
+          <div class="h7">
+            {{context.current_user.description}}
+          </div>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="h6 text-muted">Matches</div>
+            <div class="h5">{{context.matched_count}}</div>
+          </li>
+          <li class="list-group-item">
+            <div class="h6 text-muted">Likes</div>
+            <div class="h5">{{context.liked_count}}</div>
+          </li>
+          <!--
+          <li class="list-group-item">Vestibulum at eros</li>
+          -->
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6 ">
+      <!-- Styled MATCHES Card with User Details -->
+      <div class="card gedf-card">
+        <div class="card-body">
+          <div class="h5"><b>YOUR MATCHES</b></div>
+        </div>
+        <ul class="list-group list-group-flush">
+          {% for each in context.user_in_match_profiles%}
+          <li class="list-group-item d-flex align-items-center">
+            <div class="mr-3">
+              <img src="{{ each.profile_image.url}}" alt="User Image" class="rounded-circle" style="width: 50px; height: 50px;">
+            </div>
+            <div class="d-flex flex-column">
+              <div class="mb-0">
+                <p class='h6 text-black'>{{each.name}}</p>
+                {% comment %} <p class='h6 text-muted'>Interests: To be filled</p> {% endcomment %}
+
+              </div>
+              <!-- Add more user details here -->
+              <a href="{% url 'personalchat' %}?userinchat_id={{each.id}}" ><button class="btn btn-outline-info btn-sm mt-2">Chat</button></a>
+            </div>
+          </li>
+          {% endfor %}
+          {% comment %} <li class="list-group-item d-flex align-items-center">
+            <div class="mr-3">
+              <img src="https://via.placeholder.com/50" alt="User Image" class="rounded-circle" style="width: 50px; height: 50px;">
+            </div>
+            <div class="d-flex flex-column">
+              <div class="mb-0">
+                <p class='h6 text-black'>Ravi</p>
+                <p class='h6 text-muted'>Interests: To be filled</p>
+
+              </div>
+              <!-- Add more user details here -->
+              <button class="btn btn-outline-info btn-sm mt-2">Chat</button>
+            </div>
+          </li> {% endcomment %}
+          <!-- Add more user details as needed -->
+        </ul>
+      </div>
+      <!-- End of Styled MATCHES Card with User Details -->
+    </div>
+    <div class="col-md-3">
+      <!-- Interests Card -->
+      <div class="card gedf-card">
+        <div class="card-body">
+          <h5 class="card-title">My Interests</h5>
+          <ul class="list-group list-group-flush">
+            {% for each in  context.current_user_interests %}
+            <p class="ml-4 h7">- {{each.interested_in}}</p>
+            {% endfor %}
+            {% comment %} <p class="ml-4 h7">- Cooking</p>
+            <p class="ml-4 h7">- Photography</p> {% endcomment %}
+            <!-- Add more interests as needed -->
+          </ul>
+        </div>
+      </div>
+      <!-- Chat View Card -->
+      <div class="card gedf-card">
+        <div class="card-body">
+          <a href="{% url 'user_list_for_chat' %}" class="card-link float-left swipe-left">
+            <h5 class="card-title">Go to chat home </h5>
+          </a>
+            {% comment %} <ul class="list-group list-group-flush">
+              <li class="list-group-item h7">User 1: Hey, how's it going?</li>
+              <li class="list-group-item h7">User 2: Hi! I'm doing great, thanks. How about you?</li>
+              <li class="list-group-item h7">User 3: Hi! I'm doing great, thanks. How about you?</li>
+              <!-- Add more interests as needed -->
+            </ul> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
